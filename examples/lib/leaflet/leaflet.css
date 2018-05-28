@@ -386,6 +386,10 @@
 .leaflet-popup {
 	position: absolute;
 	text-align: center;
+        left:50vw !important;
+        top:20px !important;
+transform: translate(-50%, 0);
+
 	}
 .leaflet-popup-content-wrapper {
 	padding: 1px;

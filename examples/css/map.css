@@ -31,7 +31,7 @@ html, body, #map {
 .leaflet-popup-photo img, 
 .leaflet-popup-photo video {
 	display: block;
-	width: 100%;
+	width: 90vw;
 }
 .leaflet-popup-photo p {
 	margin: 5px 0 0 0;
