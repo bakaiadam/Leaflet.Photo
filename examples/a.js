@@ -13,13 +13,20 @@
 	var photoLayer = L.photo.cluster().on('click', function(evt) {
 	    var photo = evt.layer.photo,
 	        template = '<img src="{url}" /></a><p>{caption}</p>';
-            console.log(photo);
-
+            console.log(photo.url);
+            $.SimpleLightbox.open({
+    items: [photo.url]
+});
+/*
 	    evt.layer.bindPopup(L.Util.template(template, photo), {
 	        className: 'leaflet-popup-photo',
 	        minWidth: "auto"
 	    }).openPopup();
-	});
+	    */
+	}
+	
+	
+	);
 
 
 	photoLayer.add(photos).addTo(map);
