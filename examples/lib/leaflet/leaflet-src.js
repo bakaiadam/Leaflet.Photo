@@ -3857,7 +3857,7 @@ L.Popup = L.Class.extend({
 		// autoPanPaddingBottomRight: null,
 		keepInView: false,
 		className: '',
-		zoomAnimation: true
+		zoomAnimation: false
 	},
 
 	initialize: function (options, source) {
