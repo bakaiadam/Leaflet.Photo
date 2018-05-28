@@ -17,8 +17,7 @@ for filename in os.listdir("."):
         h["lng"]=g2[5]
         h["url"]="photos/"+filename
         h["thumbnail"]="photos/thumbnail"+filename
-        h["caption"]=""        
-        h["name"]=""     
+        h["name"]=""        
         g=subprocess.getoutput('convert -thumbnail 80 '+filename+' thumbnail'+filename)
         
         s.append(h)
