@@ -22,7 +22,7 @@
 	
 	
 	var map = L.map('map', {
-	    maxZoom: 14
+	    maxZoom: 20
 	});
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 	    maxZoom: 18,
@@ -32,6 +32,7 @@
 	    id: 'mapbox.streets'
 	}).addTo(map);
 
+var c;
 
 	var photoLayer = L.photo.cluster().on('click', function(evt) {
 	    var photo = evt.layer.photo,
@@ -39,29 +40,47 @@
             console.log(photo);
             lat=photo.lat;
             lng=photo.lng;
-                        items2=[photo.url]
+                        items2=[]
+jo=false
+ele=[]
             for (index = 0; index < photos.length; ++index) {
-            if (photo.url==photos[index].url) continue;
-    dist=calcCrow(lat,lng,photos[index].lat,photos[index].lng);
-    if (dist<1)
-      items2.push(photos[index].url)
-    
+            if (photo.url==photos[index].url) jo=true;
+          if (!jo)
+ele.push(photos[index].url);
+else
+      items2.push(photos[index].url)   
 }
+items2=items2.concat(ele);
+//console.log(items2)
 
-            $.SimpleLightbox.open({
+            c = $.SimpleLightbox.open({
     items: items2
 });
+/*photoLayer.on('mouseover', function(evt) {
+  var photo = evt.layer.photo;
+  var template = '<img src="{url}" /></a><p>{name}</p>';
+  evt.layer.bindPopup(L.Util.template(template, photo), {
+    className: 'leaflet-popup-photo',
+    minWidth: 400
+  }).openPopup();
+});*/
+
+
 /*
 	    evt.layer.bindPopup(L.Util.template(template, photo), {
 	        className: 'leaflet-popup-photo',
 	        minWidth: "auto"
 	    }).openPopup();
 	    */
+console.log(c);
+
 	}
 	
 	
 	);
 
+
+        photoLayer.addEventListener("mousemove", function(){c.close()});
 
 	photoLayer.add(photos).addTo(map);
 	map.fitBounds(photoLayer.getBounds());
