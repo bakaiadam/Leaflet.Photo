@@ -17,12 +17,17 @@ for filename in os.listdir("."):
         h["lng"]=g2[5]
         h["url"]="photos/"+filename
         h["thumbnail"]="photos/thumbnail"+filename
-        h["name"]=""        
+        h["name"]=""
+
+        g=subprocess.getoutput('exiftool -c "%.6f" -d "%s" "'+filename+'"|fgrep "GPS Date/Time"')
+        g2=g.split()
+        h["date"]=g2[3]
+        
         g=subprocess.getoutput('convert -thumbnail 80 '+filename+' thumbnail'+filename)
         
         s.append(h)
         continue
     else:
         continue
-print("var photos="+json.dumps(s)+";")        
+print("var photos="+json.dumps(s, indent=4)+";")        
 

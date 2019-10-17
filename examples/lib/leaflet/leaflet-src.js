@@ -7675,10 +7675,10 @@ L.Map.mergeOptions({
 L.Map.Keyboard = L.Handler.extend({
 
 	keyCodes: {
-		left:    [37],
-		right:   [39],
-		down:    [40],
-		up:      [38],
+		left:    [],
+		right:   [],
+		down:    [],
+		up:      [],
 		zoomIn:  [187, 107, 61, 171],
 		zoomOut: [189, 109, 173]
 	},
